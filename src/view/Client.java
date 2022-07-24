@@ -36,18 +36,34 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        //System.out.println(materials);
-        MaterialManager ba = new MaterialManager();
-        ba.addCrispyFlours(newCrispyFlour());
+        MaterialManager materialManager = new MaterialManager();
+        // in ra danh sach sau khi them moi vat lieu bot
+        materialManager.addCrispyFlours(newCrispyFlour());
         for (Material x:
              materials) {
             System.out.println(x);
         }
-
-
+        //in ra danh sach khi them moi vat lieu thit
+        materialManager.addMeat(newMeat());
+        for (Material x:
+                materials) {
+            System.out.println(x);
+        }
+        // sua lai thong tin vat lieu theo id
+        materialManager.updateMaterial(materials);
+        for (Material x:
+                materials) {
+            System.out.println(x);
+        }
+        // xoa thong tin vat lieu theo id
+        materialManager.deleteMaterial(materials);
+        for (Material x:
+                materials) {
+            System.out.println(x);
+        }
     }
 
-   //them moi thong tin san pham
+   //them moi thong tin san pham bot
     public static CrispyFlour newCrispyFlour() {
         CrispyFlour crispyFlour = new CrispyFlour();
         Scanner scanner = new Scanner(System.in);
@@ -71,4 +87,30 @@ public class Client {
         crispyFlour.setQuantity(quantity);
         return crispyFlour;
     }
+
+    // them moi thong tin san pham thit
+    public static Meat newMeat() {
+        Meat meat = new Meat();
+        Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("nhap id vat lieu");
+        String id = scanner.nextLine();
+        meat.setId(id);
+        System.out.println("nhap ten vat lieu");
+        String name = scanner.nextLine();
+        meat.setName(name);
+        System.out.println("moi nhap vao ngay san xuat vat lieu");
+        LocalDate manufacturingDate = LocalDate.of(scanner1.nextInt(), scanner1.nextInt(), scanner.nextInt());
+        meat.setManufacturingDate(manufacturingDate);
+        System.out.println("moi nhap vao gia vat lieu");
+        int cost = scanner1.nextInt();
+        meat.setCost(cost);
+        System.out.println("moi nhap vao khoi luong vat lieu");
+        double weight = scanner1.nextDouble();
+        meat.setWeight(weight);
+        return meat;
+    }
+
+
+
 }
